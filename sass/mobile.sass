@@ -1,0 +1,124 @@
+@import 'common'
+
+.frontend
+
+  // HEADER STYLES
+  header
+    border-bottom: 1px solid $grey5
+    .container
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      max-width: $max-width
+      margin: 0 auto
+      img
+        max-width: 40px
+        height: auto
+        margin: 10px
+      i
+        color: $grey3
+        margin: 20px
+        cursor: pointer
+      nav
+        display: none
+        ul
+          list-style-type: none
+          li
+            a
+              color: $grey3
+              font-family: $p-stack
+              text-transform: uppercase
+              text-decoration: none
+              font-weight: 700
+              font-size: 0.9em
+              letter-spacing: 2px
+
+  // SINGLE ARTICLE STYLES
+  article
+    padding: 20px 0px
+    // Limit width of article on larger screens
+    max-width: 900px
+    margin: 0px auto
+    h5
+      color: $grey3
+      // margin-bottom: 10px
+      font-size: 1em
+      max-width: $max-width
+      margin: 0 auto 10px auto
+      padding: 0px 10px
+    h1
+      // margin-bottom: 20px
+      font-size: 2.2em
+      max-width: $max-width
+      margin: 0 auto 20px auto
+      padding: 0px 10px
+    p
+      // margin-bottom: 15px
+      color: $grey2
+      font-size: 1.1em
+      max-width: $max-width
+      margin: 0 auto 15px auto
+      padding: 0px 10px
+    img
+      max-width: 100%
+      height: auto
+      margin: 30px auto
+    blockquote
+      &::before, &::after
+        content: ""
+        display: block
+        width: 50px
+        margin: 30px auto
+        border-top: 1px solid $grey4
+      p
+        font-family: $h-stack
+        text-align: center
+        font-size: 1.8em
+        color: $grey1
+        margin: 30px auto
+        padding: 0px 10px
+        &::before
+          content: "“"
+        &::after
+          content: "”"
+
+  // FOOTER STYLES
+  footer
+    background-color: $grey6
+    padding: 20px
+    text-align: center
+    // Footer menu
+    ul
+      list-style-type: none
+      max-width: 600px
+      margin: 10px auto
+      li
+        margin-bottom: 5px
+        a
+          color: $grey3
+          font-family: $p-stack
+          text-transform: uppercase
+          text-decoration: none
+          font-weight: 700
+          font-size: 0.9em
+          letter-spacing: 2px
+          &:hover
+            text-decoration: underline
+    // Copyright line
+    h4
+      color: $grey4
+      font-size: 0.7em
+      text-transform: uppercase
+      letter-spacing: 2px
+      margin: 20px auto
+      font-family: $p-stack
+      a
+        color: $grey4
+
+    // Footer logo
+    img
+      max-width: 50px
+      height: auto
+      opacity: 0.2
+      filter: grayscale(1)

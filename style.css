@@ -6,3 +6,7 @@
   Description: Minimal portfolio, blogging and store theme.
   Version: 1.0
 */
+
+@import "css/common.css";
+@import "css/mobile.css";
+@import "css/desktop.css";
