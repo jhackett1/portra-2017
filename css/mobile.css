@@ -15,6 +15,30 @@
   .frontend p {
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #969696; }
+  .frontend a.button {
+    display: inline-block;
+    padding: 12px;
+    font-size: 0.8em;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 5px solid #303030;
+    color: #ffffff;
+    background-color: #303030;
+    text-decoration: none;
+    min-width: 140px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 1px;
+    -webkit-transition: 0.1s;
+    transition: 0.1s; }
+    .frontend a.button:hover {
+      -webkit-filter: brightness(1.5);
+      filter: brightness(1.5); }
+    .frontend a.button.outline {
+      background-color: #ffffff;
+      color: #303030; }
 
 .frontend header {
   border-bottom: 1px solid #dfdfdf; }
@@ -55,60 +79,200 @@
           font-size: 0.9em;
           letter-spacing: 2px; }
 
-.frontend article {
+.frontend section#hero {
+  height: 100vh; }
+  .frontend section#hero aside.hero-image {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center; }
+  .frontend section#hero i {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    color: #ffffff;
+    margin: 25px; }
+  .frontend section#hero nav {
+    display: none; }
+  .frontend section#hero section.site-masthead {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 1px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center; }
+    .frontend section#hero section.site-masthead img {
+      max-height: 125px; }
+    .frontend section#hero section.site-masthead h5 {
+      color: #303030;
+      font-family: "Open Sans", Helvetica, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-top: 15px; }
+
+.frontend section.homepage-portfolio-section:nth-of-type(odd) div.text {
+  text-align: right; }
+
+.frontend section.homepage-portfolio-section:nth-of-type(odd) section.portfolio-grid-small aside:last-of-type {
+  -webkit-box-ordinal-group: 0;
+  -ms-flex-order: -1;
+  order: -1;
+  margin-right: 10px; }
+
+.frontend section.homepage-portfolio-section:nth-of-type(odd) section.portfolio-grid-small aside:first-of-type {
+  margin-right: 0px; }
+
+.frontend section.homepage-portfolio-section div.text {
+  padding: 35px; }
+  .frontend section.homepage-portfolio-section div.text h2 {
+    font-size: 2em;
+    margin-bottom: 10px; }
+  .frontend section.homepage-portfolio-section div.text p {
+    margin-top: 5px; }
+
+.frontend section.homepage-portfolio-section section.portfolio-grid-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+  .frontend section.homepage-portfolio-section section.portfolio-grid-small aside {
+    width: 50%; }
+    .frontend section.homepage-portfolio-section section.portfolio-grid-small aside div.desktop-text {
+      display: none; }
+    .frontend section.homepage-portfolio-section section.portfolio-grid-small aside div.grid-item {
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      border-radius: 1px;
+      position: relative; }
+      .frontend section.homepage-portfolio-section section.portfolio-grid-small aside div.grid-item a.cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-transition: 0.2s ease-in;
+        transition: 0.2s ease-in;
+        opacity: 0; }
+        .frontend section.homepage-portfolio-section section.portfolio-grid-small aside div.grid-item a.cover:hover {
+          opacity: 1; }
+    .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:first-of-type {
+      margin-right: 10px; }
+      .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:first-of-type div.grid-item:nth-of-type(1) {
+        padding-bottom: 67%;
+        margin-bottom: 10px; }
+      .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:first-of-type div.grid-item:nth-of-type(2) {
+        padding-bottom: 149%; }
+    .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:last-of-type {
+      margin-right: 0px; }
+      .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:last-of-type div.grid-item:nth-of-type(1) {
+        padding-bottom: 149%;
+        margin-bottom: 10px; }
+      .frontend section.homepage-portfolio-section section.portfolio-grid-small aside:last-of-type div.grid-item:nth-of-type(2) {
+        padding-bottom: 67%; }
+
+.frontend section.homepage-diary-entries {
+  padding: 35px; }
+  .frontend section.homepage-diary-entries h2 {
+    font-size: 2em; }
+  .frontend section.homepage-diary-entries ul {
+    list-style-type: none; }
+    .frontend section.homepage-diary-entries ul li.diary-entry-teaser {
+      margin-top: 35px; }
+      .frontend section.homepage-diary-entries ul li.diary-entry-teaser h3 {
+        margin-bottom: 5px; }
+
+.frontend section.homepage-about {
+  text-align: center;
+  margin-bottom: 35px; }
+  .frontend section.homepage-about div.homepage-about-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 67%;
+    background-position: center;
+    background-size: cover; }
+  .frontend section.homepage-about h2 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    margin-top: 35px; }
+  .frontend section.homepage-about p {
+    margin: 0 20px; }
+
+.frontend article.diary-entry {
   padding: 20px 0px;
   max-width: 900px;
   margin: 0px auto; }
-  .frontend article h5 {
+  .frontend article.diary-entry h5 {
     color: #969696;
     font-size: 1em;
     max-width: 700px;
     margin: 0 auto 10px auto;
     padding: 0px 10px; }
-  .frontend article h1 {
+  .frontend article.diary-entry h1 {
     font-size: 2.2em;
     max-width: 700px;
     margin: 0 auto 20px auto;
     padding: 0px 10px; }
-  .frontend article p {
+  .frontend article.diary-entry p {
     color: #505050;
     font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto 15px auto;
     padding: 0px 10px; }
-  .frontend article img {
+  .frontend article.diary-entry img {
     max-width: 100%;
     height: auto;
     margin: 30px auto; }
-  .frontend article blockquote::before, .frontend article blockquote::after {
+  .frontend article.diary-entry blockquote::before, .frontend article.diary-entry blockquote::after {
     content: "";
     display: block;
     width: 50px;
     margin: 30px auto;
     border-top: 1px solid #c3c3c3; }
-  .frontend article blockquote p {
+  .frontend article.diary-entry blockquote p {
     font-family: "Cantata One", serif;
     text-align: center;
     font-size: 1.8em;
     color: #303030;
     margin: 30px auto;
     padding: 0px 10px; }
-    .frontend article blockquote p::before {
+    .frontend article.diary-entry blockquote p::before {
       content: "“"; }
-    .frontend article blockquote p::after {
+    .frontend article.diary-entry blockquote p::after {
       content: "”"; }
 
 .frontend footer {
   background-color: #f6f6f6;
   padding: 20px;
   text-align: center; }
-  .frontend footer ul {
+  .frontend footer nav:first-of-type ul {
+    list-style-type: none;
+    margin: 20px auto; }
+    .frontend footer nav:first-of-type ul li {
+      display: inline;
+      margin: 0px 7px; }
+      .frontend footer nav:first-of-type ul li a {
+        color: #969696;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.8em; }
+  .frontend footer nav:last-of-type ul {
     list-style-type: none;
     max-width: 600px;
-    margin: 10px auto; }
-    .frontend footer ul li {
+    margin: 30px auto; }
+    .frontend footer nav:last-of-type ul li {
       margin-bottom: 5px; }
-      .frontend footer ul li a {
+      .frontend footer nav:last-of-type ul li a {
         color: #969696;
         font-family: "Open Sans", Helvetica, sans-serif;
         text-transform: uppercase;
@@ -116,7 +280,7 @@
         font-weight: 700;
         font-size: 0.9em;
         letter-spacing: 2px; }
-        .frontend footer ul li a:hover {
+        .frontend footer nav:last-of-type ul li a:hover {
           text-decoration: underline; }
   .frontend footer h4 {
     color: #c3c3c3;
@@ -126,7 +290,8 @@
     margin: 20px auto;
     font-family: "Open Sans", Helvetica, sans-serif; }
     .frontend footer h4 a {
-      color: #c3c3c3; }
+      color: #c3c3c3;
+      text-decoration: none; }
   .frontend footer img {
     max-width: 50px;
     height: auto;
