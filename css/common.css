@@ -1,8 +1,58 @@
+@-webkit-keyframes flicker {
+  0% {
+    -webkit-filter: brightness(0);
+    filter: brightness(0); }
+  100% {
+    -webkit-filter: brightness(1);
+    filter: brightness(1); } }
+
+@keyframes flicker {
+  0% {
+    -webkit-filter: brightness(0);
+    filter: brightness(0); }
+  100% {
+    -webkit-filter: brightness(1);
+    filter: brightness(1); } }
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@-webkit-keyframes fade2 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade2 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 .frontend {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative;
+  width: 100%; }
   .frontend * {
     margin: 0;
     padding: 0;
@@ -14,7 +64,7 @@
   .frontend p {
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #969696; }
-  .frontend a.button {
+  .frontend a.button, .frontend ul.pagination li a {
     display: inline-block;
     padding: 12px;
     font-size: 0.8em;
@@ -32,9 +82,13 @@
     border-radius: 1px;
     -webkit-transition: 0.1s;
     transition: 0.1s; }
-    .frontend a.button:hover {
+    .frontend a.button:hover, .frontend ul.pagination li a:hover {
       -webkit-filter: brightness(1.5);
       filter: brightness(1.5); }
-    .frontend a.button.outline {
-      background-color: #ffffff;
+    .frontend a.button.outline, .frontend ul.pagination li a.outline {
+      background-color: transparent;
       color: #303030; }
+
+ul.pagination li.previous a {
+  background-color: transparent;
+  color: #303030; }

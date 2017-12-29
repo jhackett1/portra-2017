@@ -1,7 +1,13 @@
 <?php
 // Enqueue scripts and styles
-wp_enqueue_style('main', get_stylesheet_uri());
-wp_enqueue_style('font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+function portra_enqueuer(){
+  wp_enqueue_style('main', get_stylesheet_uri());
+  wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
+  wp_enqueue_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/fontawesome-all.min.css');
+  wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.js');
+  wp_enqueue_script('app', get_template_directory_uri() . '/js/app.js');
+}
+add_action('wp_enqueue_scripts', 'portra_enqueuer');
 
 // Add support for a site logo and featured images
 add_theme_support('custom-logo');
@@ -24,6 +30,18 @@ function smoke_excerpt_more($more) {
 add_filter( 'excerpt_length', 'smoke_excerpt_length', 999 );
 add_filter('excerpt_more', 'smoke_excerpt_more');
 
+// Remove unneeded Wordpress widgets and menus for a cleaner client experience
+function portra_disable_dashboard_widgets() {
+    remove_menu_page( 'about.php' );
+    remove_meta_box('dashboard_primary', 'dashboard', 'core');// Remove WordPress Events and News
+}
+add_action('admin_menu', 'portra_disable_dashboard_widgets');
+
+add_action( 'wp_before_admin_bar_render', function() {
+  global $wp_admin_bar;
+  $wp_admin_bar->remove_menu('wp-logo');
+}, 7 );
+
 // Do not auto-P images
 function filter_ptags_on_images($content){
   return preg_replace('/<p>(\s*)(<img .* \/>)(\s*)<\/p>/iU', '\2', $content);
@@ -45,7 +63,7 @@ if (class_exists('WP_Customize_Control')){
     public function render_content(){
       if(!empty($this->cats)){ ?>
         <label>
-          <span class="customize-category-select-control"><?php echo esc_html( $this->label ); ?></span>
+          <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
           <select <?php $this->link(); ?>>
             <?php foreach ( $this->cats as $cat ){
               printf('<option value="%s" %s>%s</option>', $cat->term_id, selected($this->value(), $cat->term_id, false), $cat->name);
@@ -66,12 +84,6 @@ function portra_hero_customiser($wp_customize){
     'priority' => 30
   ));
   // Settings
-  $wp_customize->add_setting('portra_hero_image_url', array(
-    'transport' => 'refresh',
-  ));
-  $wp_customize->add_setting('portra_hero_strapline', array(
-    'transport' => 'refresh',
-  ));
   $wp_customize->add_setting('portra_logo_image_url', array(
     'transport' => 'refresh',
   ));
@@ -79,16 +91,6 @@ function portra_hero_customiser($wp_customize){
   $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'logo_image_url', array(
     'label' => __('Masthead image'),
     'settings' => 'portra_logo_image_url',
-    'section' => 'portra_header'
-  )));
-  $wp_customize->add_control(new WP_Customize_Control( $wp_customize, 'hero_strapline', array(
-    'label' => __('Strapline'),
-    'settings' => 'portra_hero_strapline',
-    'section' => 'portra_header'
-  )));
-  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'hero_image_url', array(
-    'label' => __('Background image'),
-    'settings' => 'portra_hero_image_url',
     'section' => 'portra_header'
   )));
 
@@ -105,7 +107,22 @@ function portra_hero_customiser($wp_customize){
   $wp_customize->add_setting('portra_homepage_category_2', array(
     'transport' => 'refresh',
   ));
+  $wp_customize->add_setting('portra_homepage_category_1_image', array(
+    'transport' => 'refresh',
+  ));
+  $wp_customize->add_setting('portra_homepage_category_2_image', array(
+    'transport' => 'refresh',
+  ));
+  $wp_customize->add_setting('portra_homepage_shop_image', array(
+    'transport' => 'refresh',
+  ));
+  $wp_customize->add_setting('portra_homepage_shop_copy', array(
+    'transport' => 'refresh',
+  ));
   $wp_customize->add_setting('portra_homepage_about_image', array(
+    'transport' => 'refresh',
+  ));
+  $wp_customize->add_setting('portra_homepage_about_copy', array(
     'transport' => 'refresh',
   ));
   // Controls
@@ -114,16 +131,48 @@ function portra_hero_customiser($wp_customize){
     'settings' => 'portra_homepage_category_1',
     'section' => 'portra_homepage_sections'
   )));
+  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'portra_homepage_category_1_image', array(
+    'label' => __('First section image'),
+    'settings' => 'portra_homepage_category_1_image',
+    'section' => 'portra_homepage_sections'
+  )));
   $wp_customize->add_control(new Category_Dropdown_Custom_Control( $wp_customize, 'portra_homepage_category_2', array(
     'label' => __('Second section category'),
     'settings' => 'portra_homepage_category_2',
     'section' => 'portra_homepage_sections'
   )));
+  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'portra_homepage_category_2_image', array(
+    'label' => __('Second section image'),
+    'settings' => 'portra_homepage_category_2_image',
+    'section' => 'portra_homepage_sections'
+  )));
+  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'portra_homepage_shop_image', array(
+    'label' => __('Shop section image'),
+    'settings' => 'portra_homepage_shop_image',
+    'section' => 'portra_homepage_sections'
+  )));
+  $wp_customize->add_control(
+    'portra_homepage_shop_copy',
+    array(
+        'label' => 'Shop section text',
+        'section' => 'portra_homepage_sections',
+        'type' => 'text',
+    )
+  );
   $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'portra_homepage_about_image', array(
     'label' => __('About me image'),
     'settings' => 'portra_homepage_about_image',
     'section' => 'portra_homepage_sections'
   )));
+  $wp_customize->add_control(
+    'portra_homepage_about_copy',
+    array(
+        'label' => 'About section text',
+        'section' => 'portra_homepage_sections',
+        'type' => 'text',
+    )
+  );
+
 
 };
 add_action('customize_register', 'portra_hero_customiser');
@@ -139,3 +188,15 @@ function portra_custom_css(){
   <?php
 };
 add_action('wp_head', 'portra_custom_css');
+// ...and customise the login screen too
+function portra_custom_login(){
+  ?>
+    <style type="text/css">
+      .login h1 a{
+        background-image: none, url(<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'medium' )[0]; ?>);
+        background-size: contain;
+      }
+    </style>
+  <?php
+};
+add_action('login_head', 'portra_custom_login');

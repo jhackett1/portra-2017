@@ -14,11 +14,34 @@ $p-stack: "Open Sans", Helvetica, sans-serif
 // Max width
 $max-width: 700px
 
+// Animation
+@keyframes flicker
+  0%
+    filter: brightness(0)
+  100%
+    filter: brightness(1)
+
+@keyframes fade
+  0%
+    opacity: 0
+    transform: scale(1.2)
+  100%
+    opacity: 1
+    transform: scale(1)
+
+@keyframes fade2
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
 // Don't affect admin pages
 .frontend
   margin: 0
   padding: 0
   box-sizing: border-box
+  position: relative
+  width: 100%
   *
     margin: 0
     padding: 0
@@ -32,7 +55,7 @@ $max-width: 700px
     font-family: $p-stack
     color: $grey3
 
-  a.button
+  a.button, ul.pagination li a
     display: inline-block
     padding: 12px
     font-size: 0.8em
@@ -52,5 +75,9 @@ $max-width: 700px
     &:hover
       filter: brightness(1.5)
     &.outline
-      background-color: $white
+      background-color: rgba(0,0,0,0)
       color: $grey1
+
+ul.pagination li.previous a
+  background-color: rgba(0,0,0,0)
+  color: $grey1

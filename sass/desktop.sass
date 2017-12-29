@@ -4,153 +4,61 @@
   .frontend
     // Make footer menu inline on bigger screens
     footer
+      margin-top: 20px
       nav:last-of-type
         ul
           li
             display: inline
-            margin: 12px
+            margin: 15px
+            font-size: 0.8em
 
 @media screen and (min-width: 800px)
   .frontend
-    // Slightly bigger buttons
+    main.lightbox
+      div.image-holder
+        i
+          display: flex
+          height: 100%
+          align-items: center
+          color: $grey4
+          font-size: 3em
+          padding: 40px
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          cursor: pointer
+          animation: 0.5s fade2 ease-in-out
+          &.fa-caret-left
+            left: -90px
+          &.fa-caret-right
+            right: -90px
+
+
     a.button
       padding: 16px
-      max-width: 150px
+      min-width: 160px
 
-    // Homepage HERO
-    section#hero
-      display: flex
-      flex-direction: row
-      padding: 10px
-      just
-      aside.hero-image
-        width: calc(50% - 5px)
-        border-radius: 1px
-      section.site-masthead
-        background-color: $white
-        padding: 35px
-      i
-        display: none
-      nav
-        display: block
-      ul
-        list-style-type: none
-        margin: 0px 35px
-        display: flex
-        flex-direction: row
-        width: 100%
-        justify-content: space-between
-        transform: translateY(-10px)
+    article.portfolio
+      h1
+        text-align: center
+        margin: 60px auto
+        font-size: 3.5em
+      ul.pagination
+        li a
+          margin: 20px 20px
+      ul.portfolio-grid
+        margin-right: 20px
         li
-          position: relative
-          &::after
-            content: ""
-            display: block
-            position: absolute
-            top: 0
-            left: 50%
-            transform: translateX(-50%)
-            transition: 0.2s ease-in-out
-            width: 0%
-            border-top: 7px solid $grey1
-            opacity: 0
-          &.current-menu-item::after
-            width: 100%
-            opacity: 1
-          &:hover::after
-            width: 100%
-            opacity: 1
-          a
-            color: $grey3
-            font-family: $p-stack
-            text-transform: uppercase
-            text-decoration: none
-            font-weight: 700
-            font-size: 0.9em
-            padding: 25px 0px
-            display: block
+          padding: 0px 0px 20px 20px
+          width: calc(33.3% - 5px)
+          a.cover
+            left: 20px
+            bottom: 24px
 
-    // Homepage PORTFOLIO GRIDS
-    section.homepage-portfolio-section
-      padding: 0px 10px
-      &:nth-of-type(odd)
-        section.portfolio-grid-small
-          aside:first-of-type
-            div.grid-item:last-of-type
-              div.desktop-text
-                text-align: left
-      div.text
-        display: none
-      section.portfolio-grid-small
-        aside:first-of-type
-          display: flex
-          flex-direction: column
-          align-items: flex-end
-          justify-content: flex-end
-          div.grid-item:last-of-type
-            background-image: none !important
-            padding-bottom: 67%
-            position: relative
-            div.desktop-text
-              display: block
-              text-align: right
-              width: 100%
-              position: absolute
-              top: 0px
-              right: 0px
-              padding: 20px
-              background-color: $white
-              h2
-                font-size: 2.5em
-                margin-bottom: 5px
-            a.cover
-              display: none
-
-
-    // Homepage DIARY ENTRY TEASERS
-    section.homepage-diary-entries
-      margin: 45px 0px
-      h2
-        font-size: 3em
-      ul
-        display: flex
-        flex-direction: row
-        li
-          width: calc(50% - 20px)
-          flex: 1
-          margin-right: 40px
-          &:last-of-type
-            margin-right: 0px
-          h3
-            font-size: 1.8em
-
-    // Homepage ABOUT
-    section.homepage-about
-      display: flex
-      flex-direction: row
-      align-items: flex-end
-      padding: 0px 10px
-      margin: 45px 0px
-      div.homepage-about-image
-        width: 50%
-        padding-bottom: 33%
-        order: 1
-        margin-left: 10px
-        border-radius: 1px
-      div.text
-        width: 50%
-        order: -1
-        text-align: right
-        background-color: $white
-        padding: 0px 35px
-        h2
-          margin-top: 0px
-          font-size: 3em
-        p
-          margin: 0
-
-    // Single article
     article.diary-entry
+      a.button
+        margin: 20px auto
+        display: table
       h1
         text-align: center
         margin: 0px auto 40px auto
@@ -160,73 +68,69 @@
         margin-top: 40px
     header
       .container
-        i
+        // justify-content: center
+        i.fa-bars
           display: none
-        nav
+        nav.menu-left
           display: block
           ul
             li
-              display: inline
-              margin-right: 25px
-              font-size: 0.9em
-              &:last-of-type
-                margin-right: 0px
+              display: inline-block
+              margin: 25px
+              font-size: 1.5em
+        nav.menu-right
+          display: block
+          ul
+            li
+              display: inline-block
+              margin: 0px 15px
+              // font-size: em
+              position: relative
+              &.current-menu-item a::after
+                width: 100%
+                opacity: 1
+              a
+                display: block
+                padding: 25px 0px
+                &:hover::after
+                  width: 100%
+                  opacity: 1
+                &::after
+                  content: ""
+                  display: block
+                  position: absolute
+                  top: 0px
+                  left: 50%
+                  transform: translateX(-50%)
+                  width: 0%
+                  opacity: 0
+                  border-top: 7px solid $grey2
+                  transition: 0.2s ease-in-out
 
-@media screen and (min-width: 1000px)
-  .frontend
-    section#hero
-      padding: 20px
-      aside
-        width: calc(50% - 10px)
-      section.site-masthead
-        img
-          max-height: 150px
-        h5
-          font-size: 1em
-      nav
-        ul
-          transform: translateY(-20px)
-    // Add overlap effect
-    section.homepage-about
-      max-width: 1100px
-      margin: 45px auto
-      padding: 0px 20px
-      div.homepage-about-image
-        margin-left: 20px
-      div.text
-        padding: 35px
-        transform: translate(65px, 35px)
-    section.homepage-portfolio-section
-      max-width: 1100px
-      margin: 45px auto
-      padding: 0px 20px
+    section.portra-homepage-split
+      display: flex
+      flex-direction: row
       &:nth-of-type(odd)
-        section.portfolio-grid-small
-          aside:last-of-type
-            margin-right: 20px
-          aside:first-of-type
-            margin-right: 0px
-            div.grid-item:last-of-type
-              div.desktop-text
-                text-align: left
-                left: -65px
-                right: inherit
-      section.portfolio-grid-small
-        aside:last-of-type
-          div.grid-item:nth-of-type(1)
-            margin-bottom: 20px
-        aside:first-of-type
+        aside.text
+          order: -1
+          align-items: flex-end
+          text-align: right
+        aside.image
           margin-right: 20px
-          div.grid-item:nth-of-type(1)
-            margin-bottom: 20px
-          div.grid-item:last-of-type
-            div.desktop-text
-              padding: 35px
-              z-index: 2
-              top: -65px
-              right: -65px
-              h2
-                font-size: 3em
-    section.homepage-diary-entries
-      max-width: 1100px
-      margin: 45px auto
+          margin-left: 0px
+      aside
+        max-width: 50%
+        flex: 1
+        &.text
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: flex-start
+          text-align: left
+          h2
+            font-size: 2.5em
+            margin-bottom: 5px
+        &.image
+          padding-bottom: 40%
+          margin-left: 20px
+          border-radius: 1px

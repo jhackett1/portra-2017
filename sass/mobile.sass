@@ -2,157 +2,245 @@
 
 .frontend
 
+  article.portfolio-detail
+    text-align: center
+    img.portfolio-image
+      max-width: 100%
+      height: auto
+      margin: 0px auto
+    p
+      margin: 40px
+      text-align: center
+
+  // The lightbox
+  main.lightbox
+    position: fixed
+    top: 0px
+    left: 0px
+    right: 0px
+    bottom: 0px
+    background-color: rgba(255,255,255,0.95)
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 35px
+    z-index: 999
+    animation: fade2 0.5s ease-in-out
+    p
+      width: 100%
+      text-align: center
+      margin: 20px
+    div.image-holder
+      text-align: center
+      height: 100%
+      position: relative
+      white-space: nowrap
+      .helper
+        height: 100%
+        vertical-align: middle
+        display: inline-block
+      img
+        max-width: 100%
+        max-height: 100%
+        vertical-align: middle
+        display: inline-block
+        border-radius: 1px
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
+        animation: fade 0.5s ease-in-out
+      i
+        display: none
+
+  // MOBILE MENU
+  sidebar.mobile-menu
+    position: fixed
+    top: 0px
+    right: 0px
+    left: 0px
+    bottom: 0px
+    background-color: rgba(255,255,255,0.95)
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+    z-index: 999
+    display: none
+    opacity: 0
+    transition: 0.5s ease-in-out
+    &.show
+      display: flex
+      opacity: 1
+      animation: fade 1s
+    i.fa-times
+      position: absolute
+      right: 0px
+      top: 0px
+      margin: 20px
+      color: $grey3
+      cursor: pointer
+    nav:first-of-type
+      ul
+        list-style-type: none
+        li
+          display: block
+          margin: 20px
+          a
+            color: $grey3
+            font-family: $p-stack
+            text-transform: uppercase
+            text-decoration: none
+            font-weight: 500
+            font-size: 1.1em
+            letter-spacing: 4px
+            transition: 0.2s ease-in-out
+            position: relative
+            &:hover::after
+              width: 100%
+              opacity: 1
+            &::after
+              content: ""
+              display: block
+              position: absolute
+              bottom: -8px
+              left: 50%
+              transform: translateX(-50%)
+              width: 0%
+              opacity: 0
+              border-top: 5px solid $grey2
+              transition: 0.3s ease-in-out
+    nav:last-of-type
+      margin-top: 40px
+      ul
+        list-style-type: none
+        li
+          display: inline
+          margin: 20px
+          a
+            font-size: 2em
+            color: $grey3
+
   // HEADER STYLES
   header
-    border-bottom: 1px solid $grey5
-    .container
-      display: flex
-      flex-direction: row
-      justify-content: space-between
-      align-items: center
-      max-width: $max-width
-      margin: 0 auto
-      img
-        max-width: 40px
-        height: auto
-        margin: 10px
-      i
-        color: $grey3
-        margin: 20px
-        cursor: pointer
-      nav
-        display: none
-        ul
-          list-style-type: none
-          li
-            a
-              color: $grey3
-              font-family: $p-stack
-              text-transform: uppercase
-              text-decoration: none
-              font-weight: 700
-              font-size: 0.9em
-              letter-spacing: 2px
-
-  // HOMEPAGE STYLES
-  section#hero
-    height: 100vh
-    aside.hero-image
-      height: 100%
-      width: 100%
-      background-size: cover
-      background-position: center
-    i
+    &.homepage
       position: absolute
-      top: 10px
-      right: 0px
-      color: $white
-      margin: 25px
+      top: 0
+    width: 100%
+    background-color: rgba(255,255,255,1)
+    z-index: 999
+  .container
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    // max-width: 1000px
+    margin: 0 auto
+    img
+      max-width: 30px
+      height: auto
+      margin: 0px 20px
+      opacity: 0.5
+    i.fa-bars
+      color: $grey3
+      margin: 20px
+      cursor: pointer
     nav
       display: none
-    section.site-masthead
+      ul
+        list-style-type: none
+        li
+          a
+            color: $grey3
+            font-family: $p-stack
+            text-transform: uppercase
+            text-decoration: none
+            font-weight: 500
+            font-size: 0.8em
+            letter-spacing: 3px
+
+  // HOMEPAGE STYLES
+  section.portra-homepage-hero
+    height: 100vh
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    padding: 20px
+    position: relative
+    overflow: hidden
+    width: 100%
+    img.masthead
+      width: 100%
+      max-width: 600px
+      height: auto
+      animation: fade 1s ease-in
+    h5
       position: absolute
-      top: 50%
-      left: 50%
-      border-radius: 1px
-      transform: translate(-50%, -50%)
-      padding: 20px
-      background-color: rgba(255,255,255,0.9)
-      text-align: center
-      img
-        max-height: 125px
-      h5
-        color: $grey1
-        font-family: $p-stack
-        text-transform: uppercase
-        font-weight: 700
-        letter-spacing: 2px
-        margin-top: 15px
-  section.homepage-portfolio-section
-    // Flip alternate sections around
+      bottom: 0px
+      font-family: $p-stack
+      letter-spacing: 3px
+      font-weight: 500
+      font-size: 0.8em
+      padding: 10px 0px 20px 0px
+      color: $grey3
+      text-transform: uppercase
+      animation: fade 1s ease-in-out
+      animation-delay: 1.5s
+      opacity: 0
+      animation-fill-mode: forwards
+      cursor: pointer
+      filter: brightness(1.8)
+      transition: 1s ease-in-out
+      &.show
+        filter: brightness(1)
+      &:hover::after
+        width: 100%
+        opacity: 1
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        top: -7px
+        left: 50%
+        transform: translateX(-50%)
+        width: 0%
+        opacity: 0
+        border-top: 5px solid $grey2
+        transition: 0.3s ease-in-out
+
+
+
+  section.portra-homepage-split
     &:nth-of-type(odd)
-      div.text
+      aside.text
         text-align: right
-      section.portfolio-grid-small
-        aside:last-of-type
-          order: -1
-          margin-right: 10px
-        aside:first-of-type
-          margin-right: 0px
-    // Heading and lede paragraph
-    div.text
+    aside.image
+      width: 100%
+      background-color: $grey6
+      background-position: center
+      background-size: cover
+      animation: 2s flicker
+      height: 0
+      padding-bottom: 67%
+      position: relative
+      a.cover
+        position: absolute
+        top: 0px
+        left: 0px
+        right: 0px
+        bottom: 0px
+        background-color: rgba(0,0,0,0.3)
+        transition: 0.2s ease-in
+        opacity: 0
+        &:hover
+          opacity: 1
+    aside.text
       padding: 35px
       h2
         font-size: 2em
-        margin-bottom: 10px
-      p
-        margin-top: 5px
-    // Small four-image grid
-    section.portfolio-grid-small
-      display: flex
-      flex-direction: row
-      aside
-        width: 50%
-        div.desktop-text
-          display: none
-        div.grid-item
-          width: 100%
-          background-position: center
-          background-size: cover
-          border-radius: 1px
-          position: relative
-          // Darkening overlay
-          a.cover
-            position: absolute
-            top: 0
-            left: 0
-            right: 0
-            bottom: 0
-            background-color: rgba(0,0,0,0.5)
-            transition: 0.2s ease-in
-            opacity: 0
-            &:hover
-              opacity: 1
-        &:first-of-type
-          margin-right: 10px
-          div.grid-item:nth-of-type(1)
-            padding-bottom: 67%
-            margin-bottom: 10px
-          div.grid-item:nth-of-type(2)
-            padding-bottom: 149%
-        &:last-of-type
-          margin-right: 0px
-          div.grid-item:nth-of-type(1)
-            padding-bottom: 149%
-            margin-bottom: 10px
-          div.grid-item:nth-of-type(2)
-            padding-bottom: 67%
-  section.homepage-diary-entries
-    padding: 35px
-    h2
-      font-size: 2em
-    ul
-      list-style-type: none
-      li.diary-entry-teaser
-        margin-top: 35px
-        h3
-          margin-bottom: 5px
-  section.homepage-about
-    text-align: center
-    margin-bottom: 35px
-    div.homepage-about-image
-      width: 100%
-      height: 0
-      padding-bottom: 67%
-      background-position: center
-      background-size: cover
-    h2
-      font-size: 2.2em
-      margin-bottom: 15px
-      margin-top: 35px
-    p
-      margin: 0 20px
 
+  section.portra-homepage-about
+    text-align: center
 
   // SINGLE ARTICLE STYLES
   article.diary-entry
@@ -160,6 +248,8 @@
     // Limit width of article on larger screens
     max-width: 900px
     margin: 0px auto
+    a.button
+      margin: 10px
     h5
       color: $grey3
       // margin-bottom: 10px
@@ -180,6 +270,8 @@
       max-width: $max-width
       margin: 0 auto 15px auto
       padding: 0px 10px
+      a
+        color: $grey1
     img
       max-width: 100%
       height: auto
@@ -214,14 +306,17 @@
         margin: 20px auto
         li
           display: inline
-          margin: 0px 7px
+          margin: 0px 10px
           a
             color: $grey3
             font-family: $p-stack
             text-transform: uppercase
             text-decoration: none
-            font-weight: 700
             font-size: 1.8em
+            transition: 0.1s ease-in
+            &:hover
+              filter: brightness(1.2)
+
     // Footer menu
     nav:last-of-type
       ul
@@ -229,17 +324,17 @@
         max-width: 600px
         margin: 30px auto
         li
-          margin-bottom: 5px
+          margin: 15px
           a
             color: $grey3
             font-family: $p-stack
             text-transform: uppercase
             text-decoration: none
-            font-weight: 700
-            font-size: 0.9em
-            letter-spacing: 2px
+            font-weight: 500
+            font-size: 1em
+            letter-spacing: 4px
             &:hover
-              text-decoration: underline
+              filter: brightness(1.1)
     // Copyright line
     h4
       color: $grey4
@@ -248,6 +343,7 @@
       letter-spacing: 2px
       margin: 20px auto
       font-family: $p-stack
+      font-weight: 500
       a
         color: $grey4
         text-decoration: none
@@ -256,5 +352,47 @@
     img
       max-width: 50px
       height: auto
-      opacity: 0.2
+      opacity:  0.2
       filter: grayscale(1)
+
+  article.portfolio
+    h1
+      margin: 20px 20px 30px 20px
+      text-align: center
+      font-size: 2.2em
+    ul.pagination
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
+      list-style-type: none
+      li a
+        margin: 20px 10px
+    ul.portfolio-grid
+      width: 100%
+      list-style-type: none
+      margin-right: 5px
+      li
+        padding: 0px 0px 0px 5px
+        width: calc(50% - 2.5px)
+        position: relative
+        border-radius: 1px
+        overflow: hidden
+        img
+          margin: 0
+          padding: 0
+          width: 100%
+          height: auto
+          animation: 0.5s fade2 ease-in-out
+          background-color: green
+        a.cover
+          position: absolute
+          top: 0
+          left: 5px
+          right: 0
+          bottom: 5px
+          opacity: 0
+          background-color: rgba(0,0,0,0.5)
+          transition: 0.2s ease-in-out
+          &:hover
+            opacity: 1
