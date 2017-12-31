@@ -46,6 +46,9 @@
   100% {
     opacity: 1; } }
 
+.wow {
+  visibility: hidden; }
+
 .frontend {
   margin: 0;
   padding: 0;
@@ -64,7 +67,7 @@
   .frontend p {
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #969696; }
-  .frontend a.button, .frontend ul.pagination li a {
+  .frontend a.button, .frontend ul.pagination li a, .frontend input.button {
     display: inline-block;
     padding: 12px;
     font-size: 0.8em;
@@ -81,17 +84,53 @@
     margin-top: 20px;
     border-radius: 1px;
     -webkit-transition: 0.1s;
-    transition: 0.1s; }
-    .frontend a.button:hover, .frontend ul.pagination li a:hover {
+    transition: 0.1s;
+    cursor: pointer; }
+    .frontend a.button:hover, .frontend ul.pagination li a:hover, .frontend input.button:hover {
       -webkit-filter: brightness(1.5);
       filter: brightness(1.5); }
-    .frontend a.button.outline, .frontend ul.pagination li a.outline {
+    .frontend a.button.outline, .frontend ul.pagination li a.outline, .frontend input.button.outline {
       background-color: transparent;
       color: #303030; }
+  .frontend ul.pagination li.previous a {
+    background-color: transparent;
+    color: #303030; }
+    .frontend ul.pagination li.previous a::before {
+      font-family: 'Pe-icon-7-stroke';
+      content: "\e686";
+      margin-right: 5px; }
+  .frontend ul.pagination li.next a::after {
+    font-family: 'Pe-icon-7-stroke';
+    content: "\e684";
+    margin-left: 5px; }
 
-ul.pagination li.previous a {
-  background-color: transparent;
-  color: #303030; }
+.frontend form.wpcf7-form {
+  text-align: left; }
+  .frontend form.wpcf7-form label {
+    font-size: 0.9em;
+    color: #505050; }
+  .frontend form.wpcf7-form input.wpcf7-text, .frontend form.wpcf7-form textarea.wpcf7-textarea {
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 1px;
+    border: none;
+    background-color: #f6f6f6;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    color: #505050;
+    font-size: 1em; }
+  .frontend form.wpcf7-form span.ajax-loader {
+    margin: 10px;
+    opacity: 0.5; }
+  .frontend form.wpcf7-form div.wpcf7-response-output {
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 10px;
+    border: none;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    color: #969696; }
+  .frontend form.wpcf7-form input.button::before {
+    content: "ten"; }
 
 .frontend article.portfolio-detail {
   text-align: center; }
@@ -110,48 +149,25 @@ ul.pagination li.previous a {
   right: 0px;
   bottom: 0px;
   background-color: rgba(255, 255, 255, 0.95);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 35px;
   z-index: 999;
   -webkit-animation: fade2 0.5s ease-in-out;
-  animation: fade2 0.5s ease-in-out; }
-  .frontend main.lightbox p {
-    width: 100%;
+  animation: fade2 0.5s ease-in-out;
+  padding: 35px; }
+  .frontend main.lightbox .caption {
+    color: #969696;
+    padding: 10px;
+    text-align: center; }
+  .frontend main.lightbox img {
+    margin: auto;
+    display: block;
     text-align: center;
-    margin: 20px; }
-  .frontend main.lightbox div.image-holder {
-    text-align: center;
-    height: 100%;
-    position: relative;
-    white-space: nowrap; }
-    .frontend main.lightbox div.image-holder .helper {
-      height: 100%;
-      vertical-align: middle;
-      display: inline-block; }
-    .frontend main.lightbox div.image-holder img {
-      max-width: 100%;
-      max-height: 100%;
-      vertical-align: middle;
-      display: inline-block;
-      border-radius: 1px;
-      -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-      -webkit-animation: fade 0.5s ease-in-out;
-      animation: fade 0.5s ease-in-out; }
-    .frontend main.lightbox div.image-holder i {
-      display: none; }
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    -webkit-animation: fade 0.5s ease-in-out;
+    animation: fade 0.5s ease-in-out; }
 
 .frontend sidebar.mobile-menu {
   position: fixed;
@@ -195,6 +211,8 @@ ul.pagination li.previous a {
     cursor: pointer; }
   .frontend sidebar.mobile-menu nav:first-of-type ul {
     list-style-type: none; }
+    .frontend sidebar.mobile-menu nav:first-of-type ul ul.sub-menu {
+      display: none; }
     .frontend sidebar.mobile-menu nav:first-of-type ul li {
       display: block;
       margin: 20px; }
@@ -205,7 +223,7 @@ ul.pagination li.previous a {
         text-decoration: none;
         font-weight: 500;
         font-size: 1.1em;
-        letter-spacing: 4px;
+        letter-spacing: 5px;
         -webkit-transition: 0.2s ease-in-out;
         transition: 0.2s ease-in-out;
         position: relative; }
@@ -388,17 +406,31 @@ ul.pagination li.previous a {
   margin: 0px auto; }
   .frontend article.diary-entry a.button {
     margin: 10px; }
-  .frontend article.diary-entry h5 {
+  .frontend article.diary-entry h5.date {
     color: #969696;
     font-size: 1em;
     max-width: 700px;
     margin: 0 auto 10px auto;
     padding: 0px 10px; }
-  .frontend article.diary-entry h1 {
+  .frontend article.diary-entry h1.title {
     font-size: 2.2em;
     max-width: 700px;
     margin: 0 auto 20px auto;
     padding: 0px 10px; }
+  .frontend article.diary-entry h2, .frontend article.diary-entry h3, .frontend article.diary-entry h4, .frontend article.diary-entry h5 {
+    margin: 30px auto 10px auto;
+    padding: 0px 10px;
+    max-width: 700px;
+    color: #303030; }
+  .frontend article.diary-entry ol, .frontend article.diary-entry ul {
+    max-width: 700px;
+    margin: 10px auto;
+    padding: 0px 10px 0px 30px; }
+    .frontend article.diary-entry ol li, .frontend article.diary-entry ul li {
+      padding-left: 10px;
+      font-family: "Open Sans", Helvetica, sans-serif; }
+      .frontend article.diary-entry ol li a, .frontend article.diary-entry ul li a {
+        color: #303030; }
   .frontend article.diary-entry p {
     color: #505050;
     font-size: 1.1em;
@@ -411,6 +443,17 @@ ul.pagination li.previous a {
     max-width: 100%;
     height: auto;
     margin: 30px auto; }
+  .frontend article.diary-entry div.wp-caption {
+    max-width: 100%;
+    height: auto;
+    margin: 30px auto; }
+    .frontend article.diary-entry div.wp-caption p.wp-caption-text {
+      padding: 0px 10px;
+      font-size: 0.9em;
+      color: #c3c3c3;
+      text-align: left; }
+    .frontend article.diary-entry div.wp-caption img {
+      margin: 0; }
   .frontend article.diary-entry blockquote::before, .frontend article.diary-entry blockquote::after {
     content: "";
     display: block;
@@ -456,6 +499,8 @@ ul.pagination li.previous a {
     margin: 30px auto; }
     .frontend footer nav:last-of-type ul li {
       margin: 15px; }
+      .frontend footer nav:last-of-type ul li ul.sub-menu {
+        display: none; }
       .frontend footer nav:last-of-type ul li a {
         color: #969696;
         font-family: "Open Sans", Helvetica, sans-serif;
@@ -485,12 +530,7 @@ ul.pagination li.previous a {
     -webkit-filter: grayscale(1);
     filter: grayscale(1); }
 
-.frontend article.portfolio h1 {
-  margin: 20px 20px 30px 20px;
-  text-align: center;
-  font-size: 2.2em; }
-
-.frontend article.portfolio ul.pagination {
+.frontend ul.pagination {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,8 +545,13 @@ ul.pagination li.previous a {
   -ms-flex-align: center;
   align-items: center;
   list-style-type: none; }
-  .frontend article.portfolio ul.pagination li a {
+  .frontend ul.pagination li a {
     margin: 20px 10px; }
+
+.frontend article.portfolio h1 {
+  margin: 20px 20px 30px 20px;
+  text-align: center;
+  font-size: 2.2em; }
 
 .frontend article.portfolio ul.portfolio-grid {
   width: 100%;
@@ -524,8 +569,7 @@ ul.pagination li.previous a {
       width: 100%;
       height: auto;
       -webkit-animation: 0.5s fade2 ease-in-out;
-      animation: 0.5s fade2 ease-in-out;
-      background-color: green; }
+      animation: 0.5s fade2 ease-in-out; }
     .frontend article.portfolio ul.portfolio-grid li a.cover {
       position: absolute;
       top: 0;

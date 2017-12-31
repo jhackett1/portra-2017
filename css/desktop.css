@@ -46,6 +46,9 @@
   100% {
     opacity: 1; } }
 
+.wow {
+  visibility: hidden; }
+
 .frontend {
   margin: 0;
   padding: 0;
@@ -64,7 +67,7 @@
   .frontend p {
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #969696; }
-  .frontend a.button, .frontend ul.pagination li a {
+  .frontend a.button, .frontend ul.pagination li a, .frontend input.button {
     display: inline-block;
     padding: 12px;
     font-size: 0.8em;
@@ -81,17 +84,25 @@
     margin-top: 20px;
     border-radius: 1px;
     -webkit-transition: 0.1s;
-    transition: 0.1s; }
-    .frontend a.button:hover, .frontend ul.pagination li a:hover {
+    transition: 0.1s;
+    cursor: pointer; }
+    .frontend a.button:hover, .frontend ul.pagination li a:hover, .frontend input.button:hover {
       -webkit-filter: brightness(1.5);
       filter: brightness(1.5); }
-    .frontend a.button.outline, .frontend ul.pagination li a.outline {
+    .frontend a.button.outline, .frontend ul.pagination li a.outline, .frontend input.button.outline {
       background-color: transparent;
       color: #303030; }
-
-ul.pagination li.previous a {
-  background-color: transparent;
-  color: #303030; }
+  .frontend ul.pagination li.previous a {
+    background-color: transparent;
+    color: #303030; }
+    .frontend ul.pagination li.previous a::before {
+      font-family: 'Pe-icon-7-stroke';
+      content: "\e686";
+      margin-right: 5px; }
+  .frontend ul.pagination li.next a::after {
+    font-family: 'Pe-icon-7-stroke';
+    content: "\e684";
+    margin-left: 5px; }
 
 @media screen and (min-width: 600px) {
   .frontend footer {
@@ -134,21 +145,40 @@ ul.pagination li.previous a {
   .frontend article.portfolio ul.pagination li a {
     margin: 20px 20px; }
   .frontend article.portfolio ul.portfolio-grid {
-    margin-right: 20px; }
+    margin-right: 10px; }
     .frontend article.portfolio ul.portfolio-grid li {
-      padding: 0px 0px 20px 20px;
-      width: calc(33.3% - 5px); }
+      padding: 0px 0px 7px 10px;
+      width: calc(33.3% - 2.5px); }
       .frontend article.portfolio ul.portfolio-grid li a.cover {
-        left: 20px;
-        bottom: 24px; }
+        left: 10px;
+        bottom: 11px; }
+  .frontend article.diary-entry img.alignright {
+    width: 40% !important;
+    float: right;
+    margin: 30px 0px 30px 30px; }
+  .frontend article.diary-entry img.alignleft {
+    width: 40% !important;
+    float: left;
+    margin: 30px 30px 30px 0px; }
+  .frontend article.diary-entry div.wp-caption p.wp-caption-text {
+    padding: 0;
+    text-align: center; }
+  .frontend article.diary-entry div.wp-caption.alignright {
+    width: 40% !important;
+    float: right;
+    margin: 30px 0px 30px 30px; }
+  .frontend article.diary-entry div.wp-caption.alignleft {
+    width: 40% !important;
+    float: left;
+    margin: 30px 30px 30px 0px; }
   .frontend article.diary-entry a.button {
     margin: 20px auto;
     display: table; }
-  .frontend article.diary-entry h1 {
+  .frontend article.diary-entry h1.title {
     text-align: center;
-    margin: 0px auto 40px auto;
+    margin: 0px auto 20px auto;
     font-size: 2.8em; }
-  .frontend article.diary-entry h5 {
+  .frontend article.diary-entry h5.date {
     text-align: center;
     margin-top: 40px; }
   .frontend header .container i.fa-bars {
@@ -161,10 +191,31 @@ ul.pagination li.previous a {
       font-size: 1.5em; }
   .frontend header .container nav.menu-right {
     display: block; }
+    .frontend header .container nav.menu-right ul li:hover > ul.sub-menu {
+      display: block;
+      -webkit-animation: 0.2s fade ease-in-out;
+      animation: 0.2s fade ease-in-out; }
     .frontend header .container nav.menu-right ul li {
       display: inline-block;
       margin: 0px 15px;
       position: relative; }
+      .frontend header .container nav.menu-right ul li ul.sub-menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0px;
+        right: 0px; }
+        .frontend header .container nav.menu-right ul li ul.sub-menu li {
+          display: block;
+          font-size: 0.9em;
+          margin: 0px; }
+          .frontend header .container nav.menu-right ul li ul.sub-menu li a {
+            padding: 0px 0px 10px 0px; }
+            .frontend header .container nav.menu-right ul li ul.sub-menu li a::after {
+              opacity: 0 !important; }
+            .frontend header .container nav.menu-right ul li ul.sub-menu li a:hover {
+              -webkit-filter: brightness(1.2);
+              filter: brightness(1.2); }
       .frontend header .container nav.menu-right ul li.current-menu-item a::after {
         width: 100%;
         opacity: 1; }

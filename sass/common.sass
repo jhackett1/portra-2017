@@ -35,6 +35,10 @@ $max-width: 700px
   100%
     opacity: 1
 
+// Fix initial flash of animated content
+.wow
+  visibility: hidden
+
 // Don't affect admin pages
 .frontend
   margin: 0
@@ -55,7 +59,7 @@ $max-width: 700px
     font-family: $p-stack
     color: $grey3
 
-  a.button, ul.pagination li a
+  a.button, ul.pagination li a, input.button
     display: inline-block
     padding: 12px
     font-size: 0.8em
@@ -72,12 +76,24 @@ $max-width: 700px
     margin-top: 20px
     border-radius: 1px
     transition: 0.1s
+    cursor: pointer
     &:hover
       filter: brightness(1.5)
     &.outline
       background-color: rgba(0,0,0,0)
       color: $grey1
 
-ul.pagination li.previous a
-  background-color: rgba(0,0,0,0)
-  color: $grey1
+  // Button icons
+  ul.pagination
+    li.previous a
+      background-color: rgba(0,0,0,0)
+      color: $grey1
+      &::before
+        font-family: 'Pe-icon-7-stroke'
+        content: "\e686"
+        margin-right: 5px
+    li.next
+      a::after
+        font-family: 'Pe-icon-7-stroke'
+        content: "\e684"
+        margin-left: 5px

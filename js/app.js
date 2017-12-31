@@ -31,41 +31,29 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     })
   }
+
+  // ESC key closes lightbox
+  document.addEventListener('keyup', function(e){
+    if (e.keyCode == 27) { // escape key maps to keycode `27`
+      closeLightbox()
+    }
+  })
+
 })
 
 // Launch a lightbox for the selected image
 function loadNewLightbox(source, index, captionString){
   // Get the body, we'll need it
   var body = document.querySelector('body');
-
   // Create lightbox parent element
   var lightbox = document.createElement('main')
   lightbox.setAttribute('class', 'lightbox');
   lightbox.setAttribute('onclick', 'closeLightbox()');
-
-  // Create image holder element
-  var imageHolder = document.createElement('div');
-  imageHolder.setAttribute('class', "image-holder");
-
-  // Create lightbox controls
-  var left = document.createElement('i');
-  left.setAttribute('class', "fas fa-caret-left");
-  imageHolder.appendChild(left);
-  var right = document.createElement('i');
-  right.setAttribute('class', "fas fa-caret-right");
-  imageHolder.appendChild(right);
-
-  // Create helper element
-  var helper = document.createElement('span');
-  helper.setAttribute('class', "helper");
-  imageHolder.appendChild(helper);
-
   // The image itself
   var image = document.createElement('img');
   image.setAttribute('src', source);
-  imageHolder.appendChild(image);
-  lightbox.appendChild(imageHolder);
-
+  // imageHolder.appendChild(image);
+  lightbox.appendChild(image);
   // The caption
   if (captionString.length > 0) {
     var caption = document.createElement('p');
@@ -74,20 +62,19 @@ function loadNewLightbox(source, index, captionString){
     caption.setAttribute('class', 'caption');
     lightbox.appendChild(caption);
   }
-
-
   // And render to the DOM
   body.appendChild(lightbox);
   // Stop the body from scrolling
   body.style.overflow = 'hidden';
-
   // Don't reload the page
   return false;
 }
 
+// Close the lightbox...
 function closeLightbox(){
   var body = document.querySelector('body');
   var lightbox = document.querySelector('main.lightbox');
   body.removeChild(lightbox);
+  // ...and make body scrollable again
   body.style.overflow = '';
 }

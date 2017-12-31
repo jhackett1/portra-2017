@@ -46,6 +46,9 @@
   100% {
     opacity: 1; } }
 
+.wow {
+  visibility: hidden; }
+
 .frontend {
   margin: 0;
   padding: 0;
@@ -64,7 +67,7 @@
   .frontend p {
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #969696; }
-  .frontend a.button, .frontend ul.pagination li a {
+  .frontend a.button, .frontend ul.pagination li a, .frontend input.button {
     display: inline-block;
     padding: 12px;
     font-size: 0.8em;
@@ -81,14 +84,22 @@
     margin-top: 20px;
     border-radius: 1px;
     -webkit-transition: 0.1s;
-    transition: 0.1s; }
-    .frontend a.button:hover, .frontend ul.pagination li a:hover {
+    transition: 0.1s;
+    cursor: pointer; }
+    .frontend a.button:hover, .frontend ul.pagination li a:hover, .frontend input.button:hover {
       -webkit-filter: brightness(1.5);
       filter: brightness(1.5); }
-    .frontend a.button.outline, .frontend ul.pagination li a.outline {
+    .frontend a.button.outline, .frontend ul.pagination li a.outline, .frontend input.button.outline {
       background-color: transparent;
       color: #303030; }
-
-ul.pagination li.previous a {
-  background-color: transparent;
-  color: #303030; }
+  .frontend ul.pagination li.previous a {
+    background-color: transparent;
+    color: #303030; }
+    .frontend ul.pagination li.previous a::before {
+      font-family: 'Pe-icon-7-stroke';
+      content: "\e686";
+      margin-right: 5px; }
+  .frontend ul.pagination li.next a::after {
+    font-family: 'Pe-icon-7-stroke';
+    content: "\e684";
+    margin-left: 5px; }

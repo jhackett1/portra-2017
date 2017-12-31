@@ -4,6 +4,8 @@ function portra_enqueuer(){
   wp_enqueue_style('main', get_stylesheet_uri());
   wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
   wp_enqueue_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/fontawesome-all.min.css');
+  wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/pe-icon-7-stroke.css');
+  wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/helper.css');
   wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.js');
   wp_enqueue_script('app', get_template_directory_uri() . '/js/app.js');
 }
@@ -174,6 +176,33 @@ function portra_hero_customiser($wp_customize){
   );
 
 
+  // SOCIAL SHARING
+  // Section
+  $wp_customize->add_section('portra_sharing', array(
+    'title' => __('Social Sharing', 'Portra 2017'),
+    'priority' => 30
+  ));
+  // Settings
+  $wp_customize->add_setting('portra_default_social_share_image', array(
+    'transport' => 'refresh',
+  ));
+  $wp_customize->add_setting('portra_twitter_account', array(
+    'transport' => 'refresh',
+  ));
+  // Controls
+  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'portra_default_social_share_image', array(
+    'label' => __('Default social share image'),
+    'settings' => 'portra_default_social_share_image',
+    'section' => 'portra_sharing'
+  )));
+  $wp_customize->add_control(
+    'portra_twitter_account',
+    array(
+        'label' => 'Associated Twitter username (without @ symbol)',
+        'section' => 'portra_sharing',
+        'type' => 'text',
+    )
+  );
 };
 add_action('customize_register', 'portra_hero_customiser');
 
