@@ -8,5 +8,9 @@
   <a href="<?php the_permalink(); ?>" class="button outline">Keep reading</a>
 </article>
 <?php endwhile; endif; ?>
+<ul class="pagination">
+  <li class="previous"><?php echo get_next_posts_link('Older entries'); ?></li>
+  <li class="next"><?php echo get_previous_posts_link('Newer entries'); ?></li>
+</ul>
 
 <?php get_footer(); ?>
