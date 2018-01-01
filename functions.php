@@ -6,8 +6,8 @@ function portra_enqueuer(){
   wp_enqueue_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/fontawesome-all.min.css');
   wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/pe-icon-7-stroke.css');
   wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/helper.css');
-  wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.js');
-  wp_enqueue_script('app', get_template_directory_uri() . '/js/app.js');
+  wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.min.js');
+  wp_enqueue_script('app', get_template_directory_uri() . '/js/app.min.js');
 }
 add_action('wp_enqueue_scripts', 'portra_enqueuer');
 

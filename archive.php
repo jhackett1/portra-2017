@@ -1,8 +1,8 @@
 <?php
   get_header();
-  wp_enqueue_script('imgs', get_template_directory_uri() . '/js/images-loaded.js');
-  wp_enqueue_script('masonry', get_template_directory_uri() . '/js/masonry.js');
-  wp_enqueue_script('infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.js');
+  wp_enqueue_script('imgs', get_template_directory_uri() . '/js/images-loaded.min.js');
+  wp_enqueue_script('masonry', get_template_directory_uri() . '/js/masonry.min.js');
+  wp_enqueue_script('infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.min.js');
 ?>
 
 <article class="portfolio">
