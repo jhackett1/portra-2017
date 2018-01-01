@@ -1,13 +1,13 @@
 <?php
 // Enqueue scripts and styles
 function portra_enqueuer(){
-  wp_enqueue_style('main', get_stylesheet_uri());
+  wp_enqueue_style('main', get_template_directory_uri() . '/css/main.css');
   wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
   wp_enqueue_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/fontawesome-all.min.css');
   wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/pe-icon-7-stroke.css');
   wp_enqueue_style('stroke-icons', get_template_directory_uri() . '/stroke-icons/css/helper.css');
-  wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.min.js');
-  wp_enqueue_script('app', get_template_directory_uri() . '/js/app.min.js');
+  wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.min.js', false, false, true);
+  wp_enqueue_script('app', get_template_directory_uri() . '/js/app.min.js', false, false, true);
 }
 add_action('wp_enqueue_scripts', 'portra_enqueuer');
 
@@ -56,7 +56,7 @@ if (class_exists('WP_Customize_Control')){
     private $cats = false;
     public function __construct($manager, $id, $args = array(), $options = array()){
       $this->cats = get_terms( array(
-    'taxonomy' => 'media_category',
+    'taxonomy' => get_theme_mod('portra_portfolio_taxonomy'),
     'hide_empty' => false,
 ) );
       parent::__construct( $manager, $id, $args );
@@ -203,6 +203,29 @@ function portra_hero_customiser($wp_customize){
         'type' => 'text',
     )
   );
+
+
+  // PORTFOLIO TAXONOMY
+  // Section
+  $wp_customize->add_section('portra_taxonomy', array(
+    'title' => __('Portfolio Taxonomy', 'Portra 2017'),
+    'priority' => 30
+  ));
+  // Settings
+  $wp_customize->add_setting('portra_portfolio_taxonomy', array(
+    'transport' => 'refresh',
+  ));
+  // Controls
+  $wp_customize->add_control(
+    'portra_portfolio_taxonomy',
+    array(
+        'label' => 'Taxonomy slug',
+        'section' => 'portra_taxonomy',
+        'type' => 'text',
+    )
+  );
+
+
 };
 add_action('customize_register', 'portra_hero_customiser');
 

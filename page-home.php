@@ -5,7 +5,7 @@
   <!-- Logo in here -->
   <?php
     if (get_theme_mod('portra_logo_image_url')) {
-      echo "<img class='masthead' src='" . get_theme_mod('portra_logo_image_url') . "' />";
+      echo "<img class='masthead' alt='" . get_bloginfo('name') . "' src='" . get_theme_mod('portra_logo_image_url') . "' />";
     }
 
   ?>
@@ -17,12 +17,12 @@ function homepage_portfolio($cat, $index){
   if (get_theme_mod('portra_homepage_category_'.$index.'_image')) { ?>
     <section class="portra-homepage-split portra-homepage-category">
       <aside class="portra-homepage-category image wow" style="background-image: url(<?php echo get_theme_mod('portra_homepage_category_'.$index.'_image'); ?>)">
-        <a href="<?php echo get_term_link(get_term_by('id', $cat, 'media_category')); ?>" class="cover"></a>
+        <a href="<?php echo get_term_link(get_term_by('id', $cat, get_theme_mod('portra_portfolio_taxonomy'))); ?>" class="cover"></a>
       </aside>
       <aside class="portra-homepage-category text">
-        <h2><?php echo get_term_by('id', $cat, 'media_category')->name; ?></h2>
-        <p><?php echo get_term_by('id', $cat, 'media_category')->description; ?></p>
-        <a class="button outline" href="<?php echo get_term_link(get_term_by('id', $cat, 'media_category')); ?>">See all</a>
+        <h2><?php echo get_term_by('id', $cat, get_theme_mod('portra_portfolio_taxonomy'))->name; ?></h2>
+        <p><?php echo get_term_by('id', $cat, get_theme_mod('portra_portfolio_taxonomy'))->description; ?></p>
+        <a class="button outline" href="<?php echo get_term_link(get_term_by('id', $cat, get_theme_mod('portra_portfolio_taxonomy'))); ?>">See all</a>
       </aside>
     </section>
   <?php }

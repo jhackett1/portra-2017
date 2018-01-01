@@ -2,7 +2,7 @@
   get_header();
   wp_enqueue_script('imgs', get_template_directory_uri() . '/js/images-loaded.min.js');
   wp_enqueue_script('masonry', get_template_directory_uri() . '/js/masonry.min.js');
-  wp_enqueue_script('infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.min.js');
+  wp_enqueue_script('infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.min.js', false, false, true);
 ?>
 
 <article class="portfolio">
@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var cat = <?php echo $wp_query->get_queried_object_id(); ?>;
     var siteUrl = "<?php echo site_url(); ?>";
     var perPage = <?php echo get_option('posts_per_page')?>;
-    requestMoreImages(cat, offset, siteUrl, masonry, perPage, function(itemsAdded){
+    var taxonomy = "<?php echo get_theme_mod('portra_portfolio_taxonomy'); ?>";
+    requestMoreImages(cat, offset, siteUrl, masonry, perPage, taxonomy, function(itemsAdded){
       // On successful load, run this code
       offset = offset + itemsAdded;
       document.addEventListener('scroll', handleScroll, {passive: true})

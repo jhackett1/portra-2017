@@ -1,8 +1,8 @@
 
 // Load in images, taking the ID of a category and an offset of at least zero
-function requestMoreImages(categoryId, offset, siteUrl, masonry, perPage, cb){
+function requestMoreImages(categoryId, offset, siteUrl, masonry, perPage, taxonomy, cb){
   // The URL, with the ID of the category passed in
-  var url = siteUrl + "/wp-json/wp/v2/media?offset=" + offset + "&media_category[]=" + categoryId + "&per_page=" + perPage;
+  var url = siteUrl + "/wp-json/wp/v2/media?offset=" + offset + "&" + taxonomy + "[]=" + categoryId + "&per_page=" + perPage;
   // Make the network request
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <!--
  _   _ _____ _     _     ___  _
 | | | | ____| |   | |   / _ \| |
@@ -15,8 +15,9 @@ Find out more at SMALLWINS.CO.UK or shoot an email to HELLO@SMALLWINS.CO.UK
 - Joshua
 
  -->
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title><?php wp_title('|', true, 'right'); echo bloginfo('name')?> | <?php echo bloginfo('description'); ?></title>
     <meta name="viewport" content="width=device-width">
     <meta property="fb:app_id" content="1134129026651501" />
