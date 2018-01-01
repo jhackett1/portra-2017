@@ -5,7 +5,7 @@
   <h5 class="date"><?php echo esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) ) . ' ago'; ?></h5>
   <h1 class="title"><?php the_title(); ?></h1>
   <?php the_excerpt(); ?>
-  <a href="<?php the_permalink(); ?>" class="button outline">Keep reading</a>
+  <a href="<?php the_permalink(); ?>" class="button">Keep reading</a>
 </article>
 <?php endwhile; endif; ?>
 <ul class="pagination">
