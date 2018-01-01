@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function(){
     requestMoreImages(cat, offset, siteUrl, masonry, perPage, function(itemsAdded){
       // On successful load, run this code
       offset = offset + itemsAdded;
-      document.addEventListener('scroll', handleScroll)
+      document.addEventListener('scroll', handleScroll, {passive: true})
     });
   }
 
   // Listen to scroll events
-  document.addEventListener('scroll', handleScroll)
+  document.addEventListener('scroll', handleScroll, {passive: true})
 
   // Handle scroll events
   function handleScroll(){

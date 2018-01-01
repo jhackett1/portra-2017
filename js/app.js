@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(){
       } else {
         scrollPrompt.classList.remove("show")
       }
-    })
+    }, {passive: true})
   }
 
   // ESC key closes lightbox

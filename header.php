@@ -19,7 +19,6 @@ Find out more at SMALLWINS.CO.UK or shoot an email to HELLO@SMALLWINS.CO.UK
   <head>
     <title><?php wp_title('|', true, 'right'); echo bloginfo('name')?> | <?php echo bloginfo('description'); ?></title>
     <meta name="viewport" content="width=device-width">
-
     <meta property="fb:app_id" content="1134129026651501" />
     <?php
     if (is_single()){
@@ -54,7 +53,7 @@ Find out more at SMALLWINS.CO.UK or shoot an email to HELLO@SMALLWINS.CO.UK
     <?php
     }
     ?>
-
+    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Open+Sans:300,400,700" rel="stylesheet">
     <?php wp_head(); ?>
   </head>
   <body <?php body_class( 'frontend' ); ?>>
